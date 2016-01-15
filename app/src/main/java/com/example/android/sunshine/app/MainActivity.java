@@ -16,9 +16,18 @@
 package com.example.android.sunshine.app;
 
 import android.content.Intent;
+<<<<<<< HEAD
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+=======
+import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+>>>>>>> 1.01_hello_world
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -38,6 +47,7 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
         mLocation = Utility.getPreferredLocation(this);
 
         setContentView(R.layout.activity_main);
+<<<<<<< HEAD
         if (findViewById(R.id.weather_detail_container) != null) {
             // The detail container view will be present only in the large-screen layouts
             // (res/layout-sw600dp). If this view is present, then the activity should be
@@ -54,6 +64,12 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
         } else {
             mTwoPane = false;
             getSupportActionBar().setElevation(0f);
+=======
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new ForecastFragment())
+                    .commit();
+>>>>>>> 1.01_hello_world
         }
 
         ForecastFragment forecastFragment =  ((ForecastFragment)getSupportFragmentManager()
@@ -80,12 +96,21 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(this, SettingsActivity.class));
+<<<<<<< HEAD
+=======
+            return true;
+        }
+
+        if (id == R.id.action_map) {
+            openPreferredLocationInMap();
+>>>>>>> 1.01_hello_world
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+<<<<<<< HEAD
     @Override
     protected void onResume() {
         super.onResume();
@@ -123,6 +148,24 @@ public class MainActivity extends ActionBarActivity implements ForecastFragment.
             Intent intent = new Intent(this, DetailActivity.class)
                     .setData(contentUri);
             startActivity(intent);
+=======
+    public void openPreferredLocationInMap() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String location = sharedPreferences.getString(
+                getString(R.string.pref_location_key),
+                getString(R.string.pref_location_default)
+        );
+
+        Uri geoLocation = Uri.parse("geo:0,0?").buildUpon()
+                .appendQueryParameter("q", location)
+                .build();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(geoLocation);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Log.d("Location URI", "Couldn't call location " + location);
+>>>>>>> 1.01_hello_world
         }
     }
 }

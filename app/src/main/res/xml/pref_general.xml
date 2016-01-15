@@ -17,6 +17,7 @@
         android:entryValues="@array/pref_units_values"
         android:entries="@array/pref_units_options" />
 
+<<<<<<< HEAD
     <CheckBoxPreference
         android:title="@string/pref_enable_notifications_label"
         android:key="@string/pref_enable_notifications_key"
@@ -25,3 +26,6 @@
         android:defaultValue="@string/pref_enable_notifications_default" />
 
 </PreferenceScreen>
+=======
+</PreferenceScreen>
+>>>>>>> 1.01_hello_world
