@@ -24,7 +24,7 @@ android {
 =======
 
     /* buildTypes.each {
-        it.buildConfigField 'String', 'OPEN_WEATHER_API_KEY', '2de143494c0b295cca9337e1e96b00e0'
+        it.buildConfigField 'String', 'OPEN_WEATHER_API_KEY', ''
     }*/
 >>>>>>> 1.01_hello_world
 }
